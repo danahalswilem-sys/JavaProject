@@ -15,6 +15,15 @@ public Hospital(int size) {
 
 }//Hospital
 
+public void displayAllEmployee() {
+    for (int i=0 ; i<empCount ; i++) {
+        if (staff[i] != null) {
+            System.out.println("----------------------------");
+            staff[i].displayInfo();
+        }
+        }
+    }
+
 public boolean addEmployee(Employee e){
 
     if(empCount < staff.length ) { // check if there is place to add new object
@@ -29,7 +38,7 @@ public boolean removeEmployee(int id) {
     for( int i = 0; i < empCount; i++ ){
         if( staff[i].id == id){
 
-            for(int j = i; j < empCount - 1; i++){ // remove by shifting
+            for(int j = i; j < empCount - 1; j++){ // remove by shifting
                 staff[j] = staff[j + 1];
             }
 
@@ -37,17 +46,17 @@ public boolean removeEmployee(int id) {
             empCount--;
             return true;
         }
+        }
         return false;
-    }
-}//removeEmployee
-
+}//removeـEmployee
+    
 public Employee searchEmployee(int id) { // search by id
 
     for(int i = 0; i < empCount; i++) { 
         if(staff[i].id == id)
             return staff[i];
     }
-    return null
+    return null;
 }//searchEmployee
 
 public boolean addBillable( Billable b) {
@@ -61,9 +70,9 @@ return false;
 
 }//addBillable
 
-public double calculateTotalSalaryRec|(int index) { //recursively goes through the staff array and adds up all salaries
+public double calculateTotalSalaryRec(int index) { //recursively goes through the staff array and adds up all salaries
 
-    if(index >= empCount){
+    if(index == empCount){
         return 0;
     }
 return staff[index].getSalary() + calculateTotalSalaryRec(index + 1);
